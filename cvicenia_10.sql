@@ -1,0 +1,9 @@
+SELECT
+    c.customer_name,
+    SUM(o.sales) AS total_sales
+FROM customers AS c
+JOIN orders AS o
+    ON o.customer_id = c.customer_id
+GROUP BY c.customer_id, c.customer_name
+HAVING SUM(o.sales) > 2000
+ORDER BY total_sales DESC;
